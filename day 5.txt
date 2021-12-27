@@ -1,0 +1,777 @@
+ 
+                                                                                       DAY -5
+                                                             -----------------------------------------------------------
+                                                            | USING ANONYMOUS AND IIFE FUNCTIONS|
+                                                             ----------------------------------------------------------- 
+
+
+A. PRINT ODD NUMBERS IN AN ARRAY.
+-----------------------------------------------------
+
+CODE:  USING IIFE(Immediately Invoked Function Expression)
+--------
+
+     (function display(numbers=[])
+         {
+                     let s1=""
+                     for(var i in numbers)           
+                         {
+                                    if(numbers[i]%2!=0)    // Logic to identify ODD numbers in an Araay
+                                      {
+                                                  s1=s1+" "+numbers[i]
+                                       }
+      
+                          }
+                 console.log(`odd numbers are :${s1}`)  //Printing ODD numbers
+
+          })([2,3,4,5,6,7,8,9])
+
+ OUTPUT:
+  ----------
+     odd numbers are : 3 5 7 9
+
+
+CODE:   USING ANONYMOUS FUNCTION
+ -----------------------------------------------------
+let display= function (numbers=[])
+         {
+                     let s1=""
+                     for(var i in numbers)           
+                         {
+                                    if(numbers[i]%2!=0)    
+                                      {
+                                                  s1=s1+" "+numbers[i]
+                                       }
+      
+                          }
+                 console.log(`odd numbers are :${s1}`)  
+
+          }
+
+    display([2,3,4,5,6,7,8,9])
+
+   OUTPUT:
+   ------------
+    odd numbers are : 3 5 7 9
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+B.Convert all the strings to title caps in a string array
+ -----------------------------------------------------------
+
+ CODE:   USING ANANYMOUS FUNCTION
+  ------
+
+ let titlecaps= function (values=[])
+        { 
+               let s3=[]
+              for(var index in values)
+                  {
+                       let s1=values[index].split("")//SPLITTING STRING AT EACH INDEX INTO ARRAY OF SUBSTIRNGS--  example:  "java"  into'j','a','v','a'
+                        let s2=""                                                                                                                                                           
+             
+                      for(var i=1;i<s1.length;i++)      
+                          {
+                                 s2=s2+s1[i]                      //storing substrings from   index 1 to n(upto length) into new s2 string--- except index 0   //   s2= 'a', 'v' , 'a'
+                          } 
+
+                     s3=s3+s1[0].toUpperCase()+s2+" "   //conevrting substring at index 0 to upper case and stroing into s3 variable                 //s3= J +a v a
+                                                                                                                                                                                                                              //s3 =  Java
+
+                  }
+              console.log("Strings with Titlecaps: ",s3)
+       }
+
+    titlecaps(["java","javascript","ecmascript","nodejs","react"])
+
+
+   OUTPUT:
+   ------------
+     Strings with Titlecaps:  Java  Javascript  Ecmascript  Nodejs  React 
+
+
+ CODE:USING  IMMEDIATELY INVOKED FUNCTION EXPRESSION
+   ---------------------------------------------------------------------------------------
+
+( function titlecaps (values=[])
+     { 
+            let s3=[]
+           for(var index in values)
+               {
+                  let s1=values[index].split("")   //SPLITTING STRING AT EACH INDEX INTO ARRAY OF SUBSTIRNGS--  example:  "java"  into  'j','a','v','a'
+                     let s2=""                                                                                                                                                           
+          
+                   for (var i=1;i<s1.length;i++)      
+                       {
+                              s2=s2+s1[i]                      //storing substrings from   index 1 to n(upto length) into new s2 string--- except index 0   //   s2= 'a', 'v' , 'a'
+                       } 
+
+                   s3=s3+s1[0].toUpperCase()+s2+" "   //conevrting substring at index 0 to upper case and stroing into s3 variable                 //s3= J +a v a
+                                                                                                                                                                                                                             //s3 =  Java
+                }
+       console.log("Strings with Titlecaps: ",s3)
+
+    }(["java","javascript","ecmascript","nodejs","react"]))
+
+   OUTPUT:
+   ------------
+     Strings with Titlecaps:  Java  Javascript  Ecmascript  Nodejs  React 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+C.SUM OF ALL NUMBERS IN AN ARRAY
+ -----------------------------------------------------
+
+    CODE: USING  ANONYMOUS  FUNCTION
+     -------
+
+           let sum=function(numbers=[])    //Anonymous function
+                {
+                            let sum=0                                //declaring a variable to add elements in an array
+    
+                           for(var number of numbers) 
+                                {
+                                            sum=sum+number   //Adding sum of elements in an Array
+                                 }
+
+                            return sum                          // Returning sum of all elements in Array
+                  }
+            console.log(`sum of all elements in an array : ${sum([20,30,40,50,60,70,80])}`)  //Calling Anonymous function
+    
+
+     OUTPUT:
+      ----------
+
+         sum of all elements in an array : 350
+
+
+ CODE:  USING IIFE FUNCTION
+ ------------------------------------------
+
+  (function sum(numbers=[])    //IIFE function
+     {
+                 let sum=0                                //declaring a variable to add elements in an array
+
+                for(var number of numbers) 
+                     {
+                                 sum=sum+number   //Adding sum of elements in an Array
+                      }
+                 
+                 console.log(`sum of all elements in an array : ${sum}`)                           //PRINTING sum of all elements in Array
+       
+     }([20,30,40,50,60,70,80]))  
+
+
+     OUTPUT:
+      ----------
+
+         sum of all elements in an array : 350
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ D.RETURN ALL PRIME NUMBERS IN AN ARRAY
+    -------------------------------------------------------------
+
+  CODE :  USING ANONYMOUS FUNCTION
+   -------
+
+          let prime=function (numbers=[])        //Anonymous function
+                {
+                         let count
+                         let s1=""
+                         for( var i=0;i<numbers .length; i++ )      //Outer loop for values in array
+                              {
+                                      count=0
+                                      for(var j=1;j<=numbers[i];j++)   //Inner Loop to check whether a number is prime
+                                          {
+                                                  if(numbers[i]%j==0)     //if number[index] is divisible by J-----1 to numbers[i]
+                                                                                         //EXAMPLE: numbers[0]=2  checks whether  2 divisible by 1,2( J -- up to numbers[0])
+                                                      {  
+                                                                  count=count+1    //incrementing count by one
+                
+                                                       }
+                                              }
+
+                                      if(count==2)            // A Prime number is divisible by one and itself only
+                                        {                            //So count of 2
+                                                s1=s1+" " +numbers[i]
+                                        }
+      
+                                }
+
+                          return s1                     //returning prime numbers 
+ 
+                   }
+
+             console.log(`Prime Numbers in given array are: ${prime([2,3,4,5,6,7,8,9,10,11])}`)
+
+
+     OUTPUT:
+      ----------
+ 
+           Prime Numbers in given array are:  2   3   5   7   11
+
+
+CODE: USING IIFE FUNCTION
+----------------------------------------------
+
+ (function prime(numbers=[])        //IIFE function
+                {
+                         let count
+                         let s1=""
+                         for( var i=0;i<numbers .length; i++ )      //Outer loop for values in array
+                              {
+                                      count=0
+                                      for(var j=1;j<=numbers[i];j++)   //Inner Loop to check whether a number is prime
+                                          {
+                                                  if(numbers[i]%j==0)     //if number[index] is divisible by J-----1 to numbers[i]
+                                                                                         //EXAMPLE: numbers[0]=2  checks whether  2 divisible by 1,2( J -- up to numbers[0])
+                                                      {  
+                                                                  count=count+1    //incrementing count by one
+                
+                                                       }
+                                              }
+
+                                      if(count==2)            // A Prime number is divisible by one and itself only
+                                        {                            //So count of 2
+                                                s1=s1+" " +numbers[i]
+                                        }
+      
+                                }
+
+                          
+                          console.log(`Prime Numbers in given array are: ${s1}`) 
+                                                                //PRINTING prime numbers  WHICH ARE STORED IN S1
+  
+                   }([2,3,4,5,6,7,8,9,10,11]))
+
+     OUTPUT:
+      ----------
+ 
+           Prime Numbers in given array are:  2   3   5   7   11
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  E. RETURN ALL PALINDROMES IN AN ARRAY
+  -----------------------------------------------------------
+
+  CODE:  USING IMMEDIATELY INVOKED FUNCTION EXPRESSION  ( IIFE )
+   -------
+   
+     (function palindrome (values=[])
+       {
+                 let s3=[]
+                 for(var index in values)
+                     {
+                               let s1=values[index].split("")   //copying each VALUES into 2 variables s1 and s2
+                               let s2=values[index].split("")
+                                  let n1=s1.length
+                                  let n2=s2.length             //length of s2 is stored in n2
+
+                                 let count=0                                         // PALINDROME IS  sequence of characters which reads the same backward as forward
+                                 for(var i=0; i<n1&&n2>=0; i++,n2--)  //S1 starts from 0 to n  &&& s2 starts from  n to 0
+                                     {
+                                          if(s1[i]==s2[n2-1])           //comparing 1st letter in s1 with last letter in s2 
+                                             { 
+                                                     count=count+1      //if same then count is incremented by 1
+                                              }
+                                      }
+
+                            if(count==n1)                         //if both s1 and s2 have same letters then count =length
+                              {
+                                      s3=s3+s1.join("")+" "   //storing palindromes into new variable
+                                }
+  
+                        }
+
+              console.log(`palindromes in given array are :`)
+              console.log(`[ ${s3} ]`)
+
+                                              // array of palindromes
+            })(["madam","ravi","refer","raju","racecar","random","level","civic"]) 
+
+   OUTPUT:
+    -----------
+      palindromes in given array are :
+          [ madam  refer  racecar   level   civic  ]
+
+
+CODE:  USING ANONYMOUS FUNCTION
+ -------------------------------------------------------
+
+ let palindrome =function (values=[])
+       {
+                 let s3=[]
+                 for(var index in values)
+                     {
+                               let s1=values[index].split("")   //copying each palindrome into 2 variables s1 and s2
+                               let s2=values[index].split("")
+                                  let n1=s1.length
+                                  let n2=s2.length             //length of s2 is stored in n2
+
+                                 let count=0    
+                                 for(var i=0; i<n1&&n2>=0; i++,n2--)
+                                     {
+                                          if(s1[i]==s2[n2-1])           //comparing 1st letter in s1 with last letter in s2 
+                                             { 
+                                                     count=count+1      //if same then count is incremented by 1
+                                              }
+                                      }
+
+                            if(count==n1)                         //if both s1 and s2 have same letters then count =length
+                              {
+                                      s3=s3+s1.join("")+" "   //storing palindromes into new variable
+                                }
+  
+                        }
+
+              console.log(`palindromes in given array are :`)
+              console.log(`[ ${s3} ]`)
+
+                                              // array of palindromes
+            }
+            
+            palindrome  (["madam","ravi","refer","raju","racecar","random","level","civic"])
+
+ OUTPUT:
+    -----------
+      palindromes in given array are :
+          [ madam  refer  racecar   level   civic  ]
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+F.  RETURN THE MEDIAN OF TWO SORTED ARRAYS OF SAME SIZE
+ ------------------------------------------------------------------------------------------------
+
+CODE :USING ANONYMOUS FUNCTION
+---------
+
+ let median= function (array1,array2)
+     {
+           
+           array1=[...array1,...array2]          //MERGING TW0 ARRAYS 
+           console.log(`Unsorted array after merging two arrays :${array1}`)
+           let temp
+            
+         /*  array1=array1.sort((a,b)=>a-b)   //SORTING ARRAYS USING SORT METHOD
+           console.log(array1)  */
+
+              for(var i=0;i<array1.length;i++)   //sorting without sort method
+                  {
+                           for(var j=i;j<array1.length;j++)
+                                {
+                                           if(array1[i]>array1[j+1])   //checking whether  previous element greater than next element 
+                                              {
+                                                   temp=array1[i]              //  if greater -- storing previous element at temp
+                                                   array1[i]=array1[j+1]     //   assigning next element to previous element
+                                                   array1[j+1]=temp         //   assigning temp value to previous element
+
+                                              }                                    //repeating the same process till i<array1.length
+                                }
+                    }
+            console.log(`sorted array is: ${array1}`)
+         
+              let n=array1.length                                       //Assigning length of array to n
+              let median                                                  //Median is middle score of distribution
+
+              if(n%2==0)                             //checking if n is even
+                {
+                     let x=n/2                           // have an even number, divide by 2
+        median=(array1[x-1]+array1[x])/2   //Go to the number in that position and average it with the number in the next higher position ---- get the median.
+                 }
+
+              else if(n%2!=0)     //checking if n is odd
+                {
+                     let x=Math.round(n/2) //have an odd number, divide by 2 and round up
+                    median=array1[x-1]       // get the position of the median number.
+                 }
+
+            return median                  //return median
+   
+    }
+ 
+     console.log(`Median of two sorted arrays of same size is: ${median([1,3,5,7,9],[2,4,6,8,10])}`)
+
+    OUTPUT:
+    -------------
+
+                  Unsorted array after merging two arrays :1,3,5,7,9,2,4,6,8,10
+
+                 sorted array is: 1,2,3,4,5,6,7,8,9,10
+
+                 Median of two sorted arrays of same size is: 5.5
+
+
+CODE:USING IMMEDIATELY INVOKED FUNCTION EXPRESSION(IIFE)
+--------------------------------------------------------------------------------------------------
+ ( function median(array1,array2)
+     {
+           
+           array1=[...array1,...array2]
+           console.log(`Unsorted array after merging two arrays :${array1}`)
+           let temp
+            
+          /* array1=array1.sort((a,b)=>a-b)
+           console.log(array1)*/
+         
+           for(var i=0;i<array1.length;i++)
+               {
+                       for(var j=i;j<array1.length;j++)
+                           {
+                                  if(array1[i]>array1[j+1])
+                                    {
+                                        temp=array1[i]
+                                        array1[i]=array1[j+1]
+                                        array1[j+1]=temp
+
+                                    }
+                           }
+            }
+         console.log(`sorted array is: ${array1}`)
+        let n=array1.length
+        let median
+        if(n%2==0)
+         {
+           let x=n/2  
+           median=(array1[x-1]+array1[x])/2
+         }
+
+         else if(n%2!=0)
+         {
+           let x=Math.round(n/2)
+           median=array1[x-1]
+         }
+
+         console.log(`Median of two sorted arrays of same size is: ${median}`)
+
+        }([1,3,5,7,9],[2,4,6,8,10]))
+
+ OUTPUT:
+    -------------
+
+                  Unsorted array after merging two arrays :1,3,5,7,9,2,4,6,8,10
+
+                 sorted array is: 1,2,3,4,5,6,7,8,9,10
+
+                 Median of two sorted arrays of same size is: 5.5
+
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+G..REMOVE DUPLICATES FROM AN ARRAY 
+     -------------------------------------------------------
+ 
+  CODE:USING ANONYMOUS FUNCTION
+   --------
+
+    let duplicates=function (values=[])
+        {
+
+               for(var i=0;i<values.length;i++)   
+                   {
+                            for(var j=i+1;j<values.length;j++)
+                                {
+                                       if(values[i]==values[j])        // COMPARING WITH NEXT ELEMENT and checking WHETHER THEY ARE SAME ARE NOT
+                                                 {
+                                                          values.splice(j,1)   //  DELETING DUPLICATES USING SPLICE METHOD
+                                                  }
+                                 }
+                    }
+         return values
+
+      }
+   console.log("Unique values in array are:")
+   console.log(duplicates([1,2,1,3,4,5,4,3,5,6]))
+     
+      OUTPUT:
+       -----------
+               Unique values in array are:
+  
+                      [1, 2, 3, 4, 5, 6]
+
+
+CODE:USING IMMEDIATELY INVOKED FUNCTION EXPRESSION
+  ---------------------------------------------------------------------------------------
+  (function duplicates (values=[])
+        {
+
+               for(var i=0;i<values.length;i++)   
+                   {
+                            for(var j=i+1;j<values.length;j++)
+                                {
+                                       if(values[i]==values[j])        // COMPARING WITH NEXT ELEMENT and checking WHETHER THEY ARE SAME ARE NOT
+                                                 {
+                                                          values.splice(j,1)   //  DELETING DUPLICATES USING SPLICE METHOD
+                                                  }
+                                 }
+                    }
+         
+      console.log(`Unique values in array are: ${values}`)
+
+      }([1,2,1,3,4,5,4,3,5,6]))
+
+     
+      OUTPUT:
+       -----------
+               Unique values in array are:
+  
+                      [1, 2, 3, 4, 5, 6] 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      
+  H. ROTATE ELEMENTS IN AN ARRAY BY K TIMES
+   --------------------------------------------------------------------
+
+ CODE:USING ANONYMOUS FUNCTION
+  --------
+
+     let rotate=function (elements,k)                        //using Anonymous function
+                                     {
+                                              for(var i=0;i<k;i++)            //  rotating elements by k times  
+                                                   {
+                                                              leftrotate(elements)   //calling leftrotate function for each K value 
+                                                    }
+
+                                         function leftrotate(elements)           // leftrotate function--rotating array to  left by one element at a time
+                                                      {
+                                                             var temp=elements[0]    // Assigning the value at index[0] to temp
+              
+                                                            for(var i=0;i<elements.length-1;i++) //if length=5 then rotate upto 4 -- 0 1 2 3
+                                                                {
+
+                                                                     elements[i]=elements[i+1]       //Assigning  next element to previous element
+                 
+                                                                 }
+                                                            elements[elements.length-1]=temp    //Assigning value in TEMP to  last index of the ARRAY
+
+                                                        }
+    
+                                        return elements
+                              }
+
+     console.log(`Left rotating elemnts :${rotate([3,4,5,6,7],2)}`)
+
+   OUTPUT:
+   ---------------
+
+    Left rotating elemnts :5,6,7,3,4
+
+
+  CODE:USING IIFE FUNCTION
+  ------------------------------------------ 
+
+                            (function rotate (elements,k)                        //using IIFE function
+                                     {
+                                              for(var i=0;i<k;i++)            //  rotating elements by k times  
+                                                   {
+                                                              leftrotate(elements)   //calling leftrotate function for each K value 
+                                                    }
+
+                                         function leftrotate(elements)           // leftrotate function--rotating array to  left by one element at a time
+                                                      {
+                                                             var temp=elements[0]    // Assigning the value at index[0] to temp
+              
+                                                            for(var i=0;i<elements.length-1;i++) //if length=5 then rotate upto 4 -- 0 1 2 3
+                                                                {
+
+                                                                     elements[i]=elements[i+1]       //Assigning  next element to previous element
+                 
+                                                                 }
+                                                            elements[elements.length-1]=temp    //Assigning value in TEMP to  last index of the ARRAY
+
+                                                        }
+    
+                                        
+                                        console.log(`Left rotating elemnts :${elements}`)
+
+                              }([3,4,5,6,7],2))
+
+
+     OUTPUT:
+   ---------------
+
+    Left rotating elemnts :5,6,7,3,4
+
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                                    -------------------------------------
+                                                                  |   USING ARROW FUNCTION  |
+                                                                    -------------------------------------
+a. Print odd numbers in an array
+-------------------------------------
+
+ CODE:            ARROW FUNCTION    '  => '
+  -------  
+
+ let display=  (numbers=[])=>
+     {
+                     let s1=""
+                     for(var i in numbers)           
+                         {
+                                    if(numbers[i]%2!=0)    
+                                      {
+                                                  s1=s1+" "+numbers[i]
+                                       }
+      
+                          }
+                 console.log(`odd numbers are :${s1}`)  
+
+      }
+
+display([2,3,4,5,6,7,8,9])
+
+
+OUTPUT:
+------------
+
+odd numbers are : 3 5 7 9
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+b.Convert all the strings to title caps in a string array
+--------------------------------------------------------------
+
+CODE:
+----------
+
+let titlecaps= (values =[])=>
+        { 
+               let s3=[]
+              for(var index in values)
+                  {
+                       let s1=values[index].split("")//SPLITTING STRING AT EACH INDEX INTO ARRAY OF SUBSTIRNGS--  example:  "java"  into'j','a','v','a'
+                        let s2=""                                                                                                                                                           
+             
+                      for(var i=1;i<s1.length;i++)      
+                          {
+                                 s2=s2+s1[i]                      //storing substrings from   index 1 to n(upto length) into new s2 string--- except index 0   //   s2= 'a', 'v' , 'a'
+                          } 
+
+                     s3=s3+s1[0].toUpperCase()+s2+" "   //conevrting substring at index 0 to upper case and stroing into s3 variable                 //s3= J +a v a
+                                                                                                                                                                                                            //s3 =  Java
+
+                  }
+              console.log("Strings with Titlecaps: ",s3)
+       }
+
+    titlecaps(["java","javascript","ecmascript","nodejs","react"])
+
+ OUTPUT:
+ ------------
+
+Strings with Titlecaps:  Java  Javascript   Ecmascript   Nodejs   React
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ C.Sum of all numbers in an array
+-----------------------------------------
+
+CODE:
+---------
+
+ let sum=(numbers=[])  =>  //ARROW function
+     {
+                 let sum=0                                //declaring a variable to add elements in an array
+
+                for(var number of numbers) 
+                     {
+                                 sum=sum+number   //Adding sum of elements in an Array
+                      }
+
+                 return sum                          // Returning sum of all elements in Array
+       }
+ console.log(`sum of all elements in an array : ${sum([20,30,40,50,60,70,80])}`)  
+
+  OUTPUT:
+ ------------
+sum of all elements in an array : 350
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+d.Return all the prime numbers in an array
+--------------------------------------------------
+
+CODE:
+---------
+
+ let prime=  (numbers=[]) =>       //ARROW  function
+                {
+                         let count
+                         let s1=""
+                         for( var i=0;i<numbers .length; i++ )      //Outer loop for values in array
+                              {
+                                      count=0
+                                      for(var j=1;j<=numbers[i];j++)   //Inner Loop to check whether a number is prime
+                                          {
+                                                  if(numbers[i]%j==0)     //if number[index] is divisible by J-----1 to numbers[i]
+                                                                                         //EXAMPLE: numbers[0]=2  checks whether  2 divisible by 1,2( J -- up to numbers[0])
+                                                      {  
+                                                                  count=count+1    //incrementing count by one
+                
+                                                       }
+                                              }
+
+                                      if(count==2)            // A Prime number is divisible by one and itself only
+                                        {                            //So count of 2
+                                                s1=s1+" " +numbers[i]
+                                        }
+      
+                                }
+
+                          return s1                     //returning prime numbers 
+ 
+                   }
+
+             console.log(`Prime Numbers in given array are: ${prime([2,3,4,5,6,7,8,9,10,11])}`)
+
+  OUTPUT:
+ -------------
+
+   Prime Numbers in given array are:  2 3 5 7 11
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+e. Return all the palindromes in an array
+ --------------------------------------------
+
+CODE:
+--------
+
+ let palindrome = (values=[])   =>
+       {
+                 let s3=[]
+                 for(var index in values)
+                     {
+                               let s1=values[index].split("")   //copying each palindrome into 2 variables s1 and s2
+                               let s2=values[index].split("")
+                                  let n1=s1.length
+                                  let n2=s2.length             //length of s2 is stored in n2
+
+                                 let count=0    
+                                 for(var i=0; i<n1&&n2>=0; i++,n2--)
+                                     {
+                                          if(s1[i]==s2[n2-1])           //comparing 1st letter in s1 with last letter in s2 
+                                             { 
+                                                     count=count+1      //if same then count is incremented by 1
+                                              }
+                                      }
+
+                            if(count==n1)                         //if both s1 and s2 have same letters then count =length
+                              {
+                                      s3=s3+s1.join("")+" "   //storing palindromes into new variable
+                                }
+  
+                        }
+
+              console.log(`palindromes in given array are :`)
+              console.log(`[ ${s3} ]`)
+
+                                              // array of palindromes
+            }
+            palindrome  (["madam","ravi","refer","raju","racecar","random","level","civic"])
+
+
+OUTPUT:
+------------
+
+  palindromes in given array are :
+ [ madam refer racecar level civic  ]
